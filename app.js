@@ -21,6 +21,11 @@ app.get("/", (req, res) => {
 app.post("/receive_data", (req, res) => {
   try {
     const data = req.body;
+    if (!data) {
+      // 如果沒有接收到有效的資料，返回 400 Bad Request
+      console.error("未接收到有效資料");
+      return res.status(400).send("Bad Request: 缺少有效資料");
+    }
     latestData = data;
 
     console.log(`收到的資料: ${JSON.stringify(data)}`);

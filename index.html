@@ -7,60 +7,44 @@
     <link rel="stylesheet" href="/styles/style.css" />
   </head>
   <body>
-    <div id="data-container"></div>
+    <div id="data-container">
+      <!-- 使用標籤作為容器 -->
+      <div class="data-card" id="voltage">
+        <div class="data-item">
+          <span class="label">Voltage:</span>
+          <span class="value">0</span>
+        </div>
+        <div class="data-item" id="current">
+          <span class="label">Current:</span>
+          <span class="value">0</span>
+        </div>
+        <div class="data-item" id="temperature">
+          <span class="label">Temperature:</span>
+          <span class="value">0</span>
+        </div>
+        <div class="data-item" id="sunlight">
+          <span class="label">Sunlight:</span>
+          <span class="value">0</span>
+        </div>
+        <div class="data-item" id="time">
+          <span class="label">Time:</span>
+          <span class="value">0</span>
+        </div>
+        <div class="data-item" id="mini_Amp">
+          <span class="label">mini_Amp:</span>
+          <span class="value">0</span>
+        </div>
+        <div class="data-item" id="humidity">
+          <span class="label">Humidity:</span>
+          <span class="value">0</span>
+        </div>
+        <div class="data-item" id="raindrop">
+          <span class="label">Raindrop:</span>
+          <span class="value">0</span>
+        </div>
+      </div>
+    </div>
 
-    <script>
-      function fetchData() {
-        fetch("http://localhost:3000") // 修改成你的接收端伺服器的地址
-          .then((response) => response.json())
-          .then((data) => {
-            const formattedData = `
-                <div class="data-card">
-                    <div class="data-item">
-                        <span class="label">Voltage:</span>
-                        <span class="value">${data.voltage} V</span>
-                    </div>
-                    <div class="data-item">
-                        <span class="label">Current:</span>
-                        <span class="value">${data.current} A</span>
-                    </div>
-                    <div class="data-item">
-                        <span class="label">Temperature:</span>
-                        <span class="value">${data.temperature} °C</span>
-                    </div>
-                    <div class="data-item">
-                        <span class="label">Sunlight:</span>
-                        <span class="value">${data.sunlight}</span>
-                    </div>
-                    <div class="data-item">
-                        <span class="label">Time:</span>
-                        <span class="value">${data.time}</span>
-                    </div>
-                    <div class="data-item">
-                        <span class="label">mini_Amp:</span>
-                        <span class="value">${data.small_current}</span>
-                    </div>
-                    <div class="data-item">
-                        <span class="label">Humidity:</span>
-                        <span class="value">${data.humidity}%</span>
-                    </div>
-                    <div class="data-item">
-                        <span class="label">Raindrop:</span>
-                        <span class="value">${data.raindrop}</span>
-                    </div>
-                </div>
-            `;
-
-            document.getElementById("data-container").innerHTML = formattedData;
-          })
-          .catch((error) => console.error("Error fetching data:", error));
-      }
-
-      // 初始呼叫
-      fetchData();
-
-      // 設定每秒自動更新
-      setInterval(fetchData, 1000);
-    </script>
+    <script src="/script.js"></script>
   </body>
 </html>
